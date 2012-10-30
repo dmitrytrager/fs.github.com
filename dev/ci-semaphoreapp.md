@@ -46,6 +46,15 @@ The good practice is to setup separate Heroku collaborator for each application 
 
 4. Add newly created user to colloborators for your project.
 
+### Migrations and other tasks after deploy
+
+If you want to run, for example, db migrations on heroku after deploy, you should first include heroku gem in your test environment.
+Then you need pass api key of the new collaborator you just created to build script. For example, via parameter:
+
+     script/ci_deploy master your-heroku-app-name heroku-api-key private-key-encoded-with-base64
+
+This will prevent heroku from asking your credentials during tasks run. Of cource, deploy script should be updated accordingly.
+
 ## Campfire notifications
 
 You can setup Campfire notification for each build:
